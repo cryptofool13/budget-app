@@ -13,7 +13,7 @@ const FundsForm = props => {
     let temp = newFunds;
     temp.push(formProps);
     handleAdd(temp);
-    setIsDisabled(true);
+    // setIsDisabled(true);
   };
   const renderPrompts = () => {
     if (isEmpty(accounts)) {

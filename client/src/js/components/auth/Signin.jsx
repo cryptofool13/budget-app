@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 
 import * as actions from "../../actions";
-import "../../../styles/form.scss";
+// import "../../../styles/form.scss";
 import { AUTH_ERROR } from "../../actions/types";
 
 class Signin extends Component {

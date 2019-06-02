@@ -2,11 +2,12 @@
 
 main.home {
   background-color: $themeColor-light;
-  height: 70vh;
+  height: 60vh;
   margin: 4rem 2rem;
   display: grid;
   grid-template-columns: [leftside] 1fr [midcol] 1fr [rightside];
-  grid-template-rows: [topside] 1fr [midrow] 1fr [bottomside];
+  grid-template-rows: [topside] 1fr [bottomside];
+  border-radius: 1rem;
 }
 section.tables {
   grid-row: [topside] / [bottomside];
@@ -14,8 +15,12 @@ section.tables {
   padding: 2rem;
 }
 section.charts {
+  height: 100%;
   padding: 2rem;
-  grid-column: [midcol] / [rightside];
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  grid-area: [topside] / [midcol] / [bottomside] / [rightside];
 }
 
 // have to position charts to the left taking up entire column

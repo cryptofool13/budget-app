@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "../../../styles/welcome.scss";
+// import "../../../styles/welcome.scss";
 
 class Welcome extends React.Component {
   constructor(props) {

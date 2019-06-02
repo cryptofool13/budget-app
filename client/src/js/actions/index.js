@@ -6,7 +6,8 @@ import {
   FUNDS_CHART,
   EXPENSE_TABLE,
   FUNDS_TABLE,
-  DATA_ERROR
+  FUND_DATA_ERROR,
+  EXPENSE_DATA_ERROR
 } from "./types";
 
 export const signup = (formProps, cb) => async dispatch => {
@@ -59,12 +60,12 @@ export const getTableFunds = () => async dispatch => {
     });
 
     if (response.data.error) {
-      return dispatch({ type: DATA_ERROR, payload: response.data.error });
+      return dispatch({ type: FUND_DATA_ERROR, payload: response.data.error });
     }
     return dispatch({ type: FUNDS_TABLE, payload: response.data });
   } catch (e) {
     return dispatch({
-      type: DATA_ERROR,
+      type: FUND_DATA_ERROR,
       payload: "something went wrong fetching the data"
     });
     console.log(e);
@@ -79,12 +80,12 @@ export const getChartFunds = () => async dispatch => {
     });
 
     if (response.data.error) {
-      dispatch({ type: DATA_ERROR, payload: response.data.error });
+      return dispatch({ type: FUND_DATA_ERROR, payload: response.data.error });
     }
-    dispatch({ type: FUNDS_CHART, payload: response.data });
+    return dispatch({ type: FUNDS_CHART, payload: response.data });
   } catch (e) {
     dispatch({
-      type: DATA_ERROR,
+      type: FUND_DATA_ERROR,
       payload: "something went wrong fetching the data"
     });
     console.log(e);
@@ -99,19 +100,22 @@ export const getTableExpenses = () => async dispatch => {
     });
 
     if (response.data.error) {
-      dispatch({ type: DATA_ERROR, payload: response.data.error });
+      return dispatch({
+        type: EXPENSE_DATA_ERROR,
+        payload: response.data.error
+      });
     }
-    dispatch({ type: EXPENSE_TABLE, payload: response.data });
+    return dispatch({ type: EXPENSE_TABLE, payload: response.data });
   } catch (e) {
     dispatch({
-      type: DATA_ERROR,
+      type: EXPENSE_DATA_ERROR,
       payload: "something went wrong fetching the data"
     });
     console.log(e);
   }
 };
 
-export const newFunds = formProps => async dispatch => {
+export const addFunds = formProps => async dispatch => {
   try {
     let token = localStorage.getItem("token");
     let entry = [];
@@ -119,6 +123,7 @@ export const newFunds = formProps => async dispatch => {
       let acct = { name: item, balance: formProps[item] };
       entry.push(acct);
     }
+    console.log(entry);
     const response = axios.post(
       "http://localhost:3000/api/funds",
       { funds: entry },
@@ -128,7 +133,26 @@ export const newFunds = formProps => async dispatch => {
     );
   } catch (e) {
     dispatch({
-      type: DATA_ERROR,
+      type: FUND_DATA_ERROR,
+      payload: `something went wrong posting to /api/funds: ${e}`
+    });
+  }
+};
+
+export const seedFunds = formProps => async dispatch => {
+  try {
+    let token = localStorage.getItem("token");
+
+    const response = axios.post(
+      "http://localhost:3000/api/funds",
+      { funds: formProps },
+      {
+        headers: { Authorization: token }
+      }
+    );
+  } catch (e) {
+    dispatch({
+      type: FUND_DATA_ERROR,
       payload: `something went wrong posting to /api/funds: ${e}`
     });
   }
@@ -150,7 +174,7 @@ export const queueExpenseData = formProps => async dispatch => {
     );
   } catch (e) {
     dispatch({
-      type: DATA_ERROR,
+      type: EXPENSE_DATA_ERROR,
       payload: `something went wrong posting to /api/spending: ${e}`
     });
   }

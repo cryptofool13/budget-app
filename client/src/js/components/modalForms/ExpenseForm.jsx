@@ -1,10 +1,11 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 
+import ExpenseInit from "./ExpenseInit.jsx";
 import { isEmpty } from "../../utils";
 
 const ExpenseForm = props => {
-  const { handleSubmit, newItems, handleAdd } = props;
+  const { handleSubmit, newItems, handleAdd, expenses } = props;
 
   const onSubmit = () => {
     console.log(newItems);
@@ -15,17 +16,32 @@ const ExpenseForm = props => {
     handleAdd(temp);
     onSubmit();
   };
+  const renderPrompts = () => {
+    if (isEmpty(expenses)) {
+      return <ExpenseInit />;
+    }
+    return (
+      <>
+        <fieldset>
+          <label>Label</label>
+          <Field
+            name="label"
+            type="text"
+            component="input"
+            autoComplete="none"
+          />
+        </fieldset>
+        <fieldset>
+          <label>Cost</label>
+          <Field name="cost" type="number" component="input" />
+        </fieldset>
+      </>
+    );
+  };
   return (
     <form onSubmit={handleSubmit(onAdd)}>
       <h3>Expenses</h3>
-      <fieldset>
-        <label>Label</label>
-        <Field name="label" type="text" component="input" autoComplete="none" />
-      </fieldset>
-      <fieldset>
-        <label>Cost</label>
-        <Field name="cost" type="number" component="input" />
-      </fieldset>
+      {renderPrompts()}
       <button type="submit">Add</button>
     </form>
   );

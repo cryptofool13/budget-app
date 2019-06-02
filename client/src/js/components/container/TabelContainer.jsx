@@ -20,7 +20,7 @@ const TabelContainer = props => {
     props.getTableExpenses();
   };
 
-  const renderRows = data => {
+  const renderFRows = data => {
     if (props.fundsError) {
       return (
         <tr>
@@ -36,20 +36,41 @@ const TabelContainer = props => {
       );
     }
 
-    return data.map(item => {
+    return data.map(item => (
+      <tr key={item._id}>
+        <td>{item.name}</td>
+        <td>{item.balance}</td>
+      </tr>
+    ));
+  };
+
+  const renderERows = data => {
+    if (props.expenseError)
       return (
-        <tr key={item._id}>
-          <td>{item.name || item.label}</td>
-          <td>{item.balance || item.cost}</td>
+        <tr>
+          <th>{props.expenseError}</th>
         </tr>
       );
-    });
+
+    if (!data[0])
+      return (
+        <tr>
+          <th>loading...</th>
+        </tr>
+      );
+
+    return data.map(item => (
+      <tr key={item._id}>
+        <td>{item.label}</td>
+        <td>{item.cost}</td>
+      </tr>
+    ));
   };
 
   return (
     <section className="tables">
-      <Accounts renderRows={renderRows} accounts={props.funds} />
-      <Spending renderRows={renderRows} expenses={props.expenses} />
+      <Accounts renderRows={renderFRows} accounts={props.funds} />
+      <Spending renderRows={renderERows} expenses={props.expenses} />
     </section>
   );
 };
@@ -58,7 +79,8 @@ const mapStateToProps = state => {
   return {
     funds: state.funds.tableData,
     expenses: state.expenses.tableData,
-    fundsError: state.funds.errorMessage
+    fundsError: state.funds.errorMessage,
+    expenseError: state.expenses.errorMessage
   };
 };
 

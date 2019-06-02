@@ -5,16 +5,17 @@ import TableContainer from "../container/TabelContainer.jsx";
 import ChartContainer from "../container/ChartContainer.jsx";
 import ModalContainer from "../container/ModalContainer.jsx";
 
-import "../../../styles/home.scss";
+// import "../../../styles/home.scss";
 
 const Home = props => {
-  console.log(props);
   return (
-    <main className="home">
-      <TableContainer />
-      <ChartContainer />
+    <>
+      <main className="home">
+        <TableContainer />
+        <ChartContainer />
+      </main>
       <ModalContainer history={props.history} />
-    </main>
+    </>
   );
 };
 

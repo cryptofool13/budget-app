@@ -17,6 +17,7 @@
 }
 .logo {
   display: flex;
+  font-weight: 700;
   font-size: 2rem;
   background-color: darken($color: $themeColor-dark, $amount: 9);
   height: 100%;

@@ -12,6 +12,7 @@ import reducers from "./reducers";
 import Signin from "./components/auth/Signin.jsx";
 import Signup from "./components/auth/Signup.jsx";
 import Signout from "./components/auth/Signout.jsx";
+import "../styles/index.scss";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

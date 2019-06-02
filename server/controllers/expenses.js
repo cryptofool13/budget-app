@@ -21,6 +21,9 @@ exports.addExpenseItems = (req, res, next) => {
   if (!Array.isArray(expenses)) {
     return res.send({ error: "bad input: expenses must be an array" });
   }
+  if (!expenses[0]) {
+    return res.send({ error: "bad input: no data received" });
+  }
 
   let items = [];
 
@@ -67,7 +70,7 @@ exports.getCurrentExpensesLs = (req, res, next) => {
       return res.send({ error: "user not found" });
     }
     if (!user.expenses.length) {
-      return res.send({ message: "no data present" });
+      return res.send({ error: "no data present" });
     }
     // filter user's expense items by current month
     user.expenses.forEach(entry => {

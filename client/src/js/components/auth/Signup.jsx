@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 
 import * as actions from "../../actions";
-import "../../../styles/form.scss";
+// import "../../../styles/form.scss";
 
 class Signup extends Component {
   onSubmit = formProps => {

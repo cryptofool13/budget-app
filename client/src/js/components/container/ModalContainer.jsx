@@ -19,12 +19,14 @@ const ModalContainer = props => {
   };
 
   const handleSubmit = () => {
-    props.newFunds(newFunds[0]);
+    if (!props.funds[0]) {
+      props.seedFunds(newFunds);
+    }
+    props.addFunds(newFunds[0]);
     props.queueExpenseData(newItems);
-    props.history.go("/home");
+    // props.history.go("/home");
   };
 
-  // console.log(newItems, "\n", newFunds);
   return (
     <section>
       <Modal show={show} handleClose={hideModal}>
@@ -33,7 +35,11 @@ const ModalContainer = props => {
           handleAdd={setNewFunds}
           accounts={props.funds}
         />
-        <ExpenseForm newItems={newItems} handleAdd={setNewItems} />
+        <ExpenseForm
+          newItems={newItems}
+          handleAdd={setNewItems}
+          expenses={props.expenses}
+        />
         <button onClick={handleSubmit}>Submit</button>
       </Modal>
       <button onClick={() => showModal()}>Update Data</button>
@@ -45,7 +51,8 @@ const mapStateToProps = state => {
   return {
     errorMessage: state.auth.errorMessage,
     funds: state.funds.tableData,
-    newFunds: state.form.updateFunds
+    newFunds: state.form.updateFunds,
+    expenses: state.expenses.tableData
   };
 };
 

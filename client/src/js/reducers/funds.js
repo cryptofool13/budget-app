@@ -1,4 +1,4 @@
-import { DATA_ERROR, FUNDS_CHART, FUNDS_TABLE } from "../actions/types";
+import { FUND_DATA_ERROR, FUNDS_CHART, FUNDS_TABLE } from "../actions/types";
 
 const INIT_STATE = {
   tableData: [],
@@ -12,7 +12,7 @@ export default (state = INIT_STATE, action) => {
       return { ...state, tableData: action.payload };
     case FUNDS_CHART:
       return { ...state, chartData: action.payload };
-    case DATA_ERROR:
+    case FUND_DATA_ERROR:
       return { ...state, errorMessage: action.payload };
     default:
       return state;

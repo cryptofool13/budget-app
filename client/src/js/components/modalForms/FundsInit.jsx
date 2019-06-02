@@ -1,10 +1,10 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field } from "redux-form";
 
 const FundsInit = () => {
   const handleSubmit = () => {};
   return (
-    <div>
+    <>
       <h3>Start by entering your funds info</h3>
       <fieldset>
         <label htmlFor="name">Name</label>
@@ -20,8 +20,8 @@ const FundsInit = () => {
         <label htmlFor="balance">Balance</label>
         <Field name="balance" component="input" type="number" />
       </fieldset>
-    </div>
+    </>
   );
 };
 
-export default reduxForm({ form: "fundsInit" })(FundsInit);
+export default FundsInit;
