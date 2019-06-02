@@ -62,3 +62,31 @@ fieldset {
     width: 100%;
   }
 }
+
+@keyframes fadeout {
+  0% {
+    transform: scale3d(1, 1, 1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale3d(0.4, 0.4, 1.4) translateY(-7rem);
+    opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    transform: scale3d(1.5, 1.5, 1.5) translateY(9rem);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale3d(1, 1, 1) translateY(0);
+    opacity: 1;
+  }
+}
+section.fading-in {
+  animation: fadein 0.5s ease-out;
+}
+section.fading-out {
+  animation: fadeout 0.3s ease-in forwards;
+}

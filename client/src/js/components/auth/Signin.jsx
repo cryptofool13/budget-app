@@ -11,17 +11,21 @@ class Signin extends Component {
   onSubmit = formProps => {
     // this.props.setuser();
     this.props.signin(formProps, () => {
-      this.props.history.push("/home");
+      document.getElementById("form").classList.toggle("fading-out");
+      setTimeout(() => {
+        this.props.history.push("/home");
+      }, 350);
     });
   };
   componentDidMount() {
     this.props.resetAuthError();
+    document.getElementById("form").classList.toggle("fading-in");
   }
   render() {
     const { handleSubmit } = this.props;
     return (
       <main>
-        <section className="form">
+        <section id="form" className="form">
           <div className="form-header">Sign Back In</div>
 
           <form onSubmit={handleSubmit(this.onSubmit)}>
