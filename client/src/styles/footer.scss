@@ -1,0 +1,11 @@
+@import "themeColors";
+.footer {
+  position: fixed;
+  height: 10vh;
+  bottom: 0vh;
+  width: 100%;
+  background-color: $themeColor-dark;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

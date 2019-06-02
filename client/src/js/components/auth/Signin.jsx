@@ -1,0 +1,76 @@
+import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
+import { connect } from "react-redux";
+import { compose } from "redux";
+
+import * as actions from "../../actions";
+import "../../../styles/form.scss";
+import { AUTH_ERROR } from "../../actions/types";
+
+class Signin extends Component {
+  onSubmit = formProps => {
+    // this.props.setuser();
+    this.props.signin(formProps, () => {
+      this.props.history.push("/home");
+    });
+  };
+  componentDidMount() {
+    this.props.resetAuthError();
+  }
+  render() {
+    const { handleSubmit } = this.props;
+    return (
+      <main>
+        <section className="form">
+          <div className="form-header">Sign Back In</div>
+
+          <form onSubmit={handleSubmit(this.onSubmit)}>
+            <fieldset className="email">
+              <label>Email</label>
+              <Field
+                name="email"
+                autoComplete="off"
+                focus="true"
+                type="text"
+                component="input"
+              />
+            </fieldset>
+            <fieldset className="password">
+              <label>Password</label>
+              <Field
+                name="password"
+                autoComplete="off"
+                type="password"
+                component="input"
+              />
+            </fieldset>
+            <div className="error">{this.props.errorMessage}</div>
+            <button
+              style={{
+                backgroundColor: this.props.errorMessage ? "#b21314a0" : "#5aa",
+                color: this.props.errorMessage ? "#ede" : "#666"
+              }}
+              className="btn"
+            >
+              Sign In
+            </button>
+          </form>
+        </section>
+      </main>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    errorMessage: state.auth.errorMessage
+  };
+};
+
+export default compose(
+  connect(
+    mapStateToProps,
+    actions
+  ),
+  reduxForm({ form: "signin" })
+)(Signin);

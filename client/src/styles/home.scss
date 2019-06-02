@@ -1,0 +1,21 @@
+@import "themeColors";
+
+main.home {
+  background-color: $themeColor-light;
+  height: 70vh;
+  margin: 4rem 2rem;
+  display: grid;
+  grid-template-columns: [leftside] 1fr [midcol] 1fr [rightside];
+  grid-template-rows: [topside] 1fr [midrow] 1fr [bottomside];
+}
+section.tables {
+  grid-row: [topside] / [bottomside];
+  grid-column: [leftside] / [midcol];
+  padding: 2rem;
+}
+section.charts {
+  padding: 2rem;
+  grid-column: [midcol] / [rightside];
+}
+
+// have to position charts to the left taking up entire column
