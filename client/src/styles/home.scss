@@ -13,13 +13,16 @@ section.tables {
   grid-row: [topside] / [bottomside];
   grid-column: [leftside] / [midcol];
   padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 section.charts {
   height: 100%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   grid-area: [topside] / [midcol] / [bottomside] / [rightside];
 }
 
