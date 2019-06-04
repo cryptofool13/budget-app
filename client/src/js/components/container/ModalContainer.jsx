@@ -5,6 +5,7 @@ import * as actions from "../../actions";
 import Modal from "../presentational/Modal.jsx";
 import FundsForm from "../modalForms/FundsForm.jsx";
 import ExpenseForm from "../modalForms/ExpenseForm.jsx";
+import { isEmpty } from "../../utils";
 
 const ModalContainer = props => {
   const [newFunds, setNewFunds] = useState([]);
@@ -24,22 +25,30 @@ const ModalContainer = props => {
     }
     props.addFunds(newFunds[0]);
     props.queueExpenseData(newItems);
-    // props.history.go("/home");
+    props.history.go("/home");
   };
-
-  return (
-    <section>
-      <Modal show={show} handleClose={hideModal}>
+  const formWizard = () => {
+    if (isEmpty(newFunds))
+      return (
         <FundsForm
           newFunds={newFunds}
           handleAdd={setNewFunds}
           accounts={props.funds}
         />
-        <ExpenseForm
-          newItems={newItems}
-          handleAdd={setNewItems}
-          expenses={props.expenses}
-        />
+      );
+    return (
+      <ExpenseForm
+        newItems={newItems}
+        handleAdd={setNewItems}
+        expenses={props.expenses}
+      />
+    );
+  };
+
+  return (
+    <section>
+      <Modal show={show} handleClose={hideModal}>
+        {formWizard()}
         <button onClick={handleSubmit}>Submit</button>
       </Modal>
       <button onClick={() => showModal()}>Update Data</button>
