@@ -15,7 +15,10 @@ section.tables {
   padding: 2rem;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 40vw;
 }
 section.charts {
   height: 100%;
@@ -24,6 +27,32 @@ section.charts {
   flex-direction: column;
   justify-content: space-around;
   grid-area: [topside] / [midcol] / [bottomside] / [rightside];
+}
+.update-button {
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  // bottom: 10%;
+  // left: 10%;
+  margin-top: 1rem;
+  background-color: $themeColor-dark;
+  font-size: 1.2rem;
+  width: 100%;
+  height: 2rem;
+  transition: all 0.25s;
+  border-radius: 0.5rem;
+  border: 2px lighten($color: $themeColor-dark, $amount: 10) solid;
+  padding: 0 2rem;
+  z-index: 1;
+  &:hover {
+    background-color: lighten($color: $themeColor-dark, $amount: 5);
+    border-radius: 2rem;
+    letter-spacing: 0.2rem;
+  }
+  &:active {
+    letter-spacing: 0;
+    background-color: darken($color: $themeColor-dark, $amount: 10);
+  }
 }
 
 // have to position charts to the left taking up entire column

@@ -23,8 +23,8 @@ const TabelContainer = props => {
   const renderFRows = data => {
     if (props.fundsError) {
       return (
-        <tr>
-          <th>{props.fundsError}</th>
+        <tr className="warning-row">
+          <td>{props.fundsError}</td>
         </tr>
       );
     }
@@ -47,8 +47,8 @@ const TabelContainer = props => {
   const renderERows = data => {
     if (props.expenseError)
       return (
-        <tr>
-          <th>{props.expenseError}</th>
+        <tr className="warning-row">
+          <td>{props.expenseError}</td>
         </tr>
       );
 
@@ -70,7 +70,9 @@ const TabelContainer = props => {
   return (
     <section className="tables">
       <Accounts renderRows={renderFRows} accounts={props.funds} />
+
       <Spending renderRows={renderERows} expenses={props.expenses} />
+      {props.children}
     </section>
   );
 };

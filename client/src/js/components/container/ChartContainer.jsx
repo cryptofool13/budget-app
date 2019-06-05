@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
-import LineChart from "../presentational/charts/LineChart.jsx";
+import * as actions from "../../actions";
+import FundsChart from "../presentational/charts/FundsChart.jsx";
 import PieChart from "../presentational/charts/PieChart.jsx";
 
-const ChartContainer = () => {
-  let data = []; // change to chart data from redux store
+const ChartContainer = props => {
+  console.log(props.lineData);
+  useEffect(() => {
+    props.getChartFunds();
+  }, []);
+
   return (
     <section className="charts">
-      <LineChart data={data} />
-      <PieChart data={data} />
+      <FundsChart data={props.lineData} />
+      <PieChart />
     </section>
   );
 };
 
-export default ChartContainer;
+const mapStateToProps = state => {
+  return {
+    lineData: state.funds.chartData
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  actions
+)(ChartContainer);

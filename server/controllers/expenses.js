@@ -74,7 +74,7 @@ exports.getCurrentExpensesLs = (req, res, next) => {
     }
     // filter user's expense items by current month
     user.expenses.forEach(entry => {
-      if (currentTime - entry.timestamp.getTime() < 2628000000) {
+      if (currentTime - entry.timestamp.getTime() < 657000000) {
         entry.items.forEach(item => {
           expenses.push(item);
         });

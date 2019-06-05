@@ -11,10 +11,10 @@ const Home = props => {
   return (
     <>
       <main className="home">
-        <TableContainer />
+        <TableContainer><ModalContainer history={props.history} /></TableContainer>
         <ChartContainer />
+        
       </main>
-      <ModalContainer history={props.history} />
     </>
   );
 };

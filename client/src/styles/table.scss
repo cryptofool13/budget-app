@@ -1,4 +1,44 @@
 .tables {
   background-color: lighten($color: $themeColor-dark, $amount: 12);
   margin: 0 2rem;
+  max-height: 55vh;
+  text-align: center;
+  vertical-align: center;
+  table {
+    padding: 1rem;
+  }
+  .expense-table {
+    position: relative;
+    top: 0vh;
+    z-index: 0;
+    max-height: 20vh;
+    overflow-y: scroll;
+
+    th {
+      position: sticky;
+      top: 0vh;
+    }
+  }
+  .accounts-table {
+    position: relative;
+    top: 0vh;
+    z-index: 0;
+    max-height: 20vh;
+    th {
+      position: sticky;
+      top: 3vh;
+    }
+  }
+  th {
+    background-color: $themeColor-dark;
+    padding: 0 1rem;
+  }
+  tr {
+    padding: 0.5rem 0;
+  }
+}
+.warning-row td {
+  border: red 1px solid;
+  color: #ddd;
+  font-weight: 500;
 }

@@ -46,12 +46,14 @@ const ModalContainer = props => {
   };
 
   return (
-    <section>
+    <section className="modal-container">
       <Modal show={show} handleClose={hideModal}>
         {formWizard()}
         <button onClick={handleSubmit}>Submit</button>
       </Modal>
-      <button onClick={() => showModal()}>Update Data</button>
+      <button className="update-button" onClick={() => showModal()}>
+        Update Data
+      </button>
     </section>
   );
 };
