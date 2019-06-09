@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Field, reduxForm } from "redux-form";
 
 import FundsInit from "./FundsInit.jsx";
-import { isEmpty } from "../../utils";
 
 const FundsForm = props => {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -11,10 +10,8 @@ const FundsForm = props => {
 
   const onAdd = formProps => {
     let temp = newFunds;
-    console.log("temp", temp);
     if (formProps.hasOwnProperty("balance")) temp.push(formProps);
     handleAdd(temp);
-    console.log(newFunds);
   };
   const renderPrompts = () => {
     if (!finished) {

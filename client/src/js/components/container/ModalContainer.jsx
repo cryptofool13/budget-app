@@ -5,7 +5,6 @@ import * as actions from "../../actions";
 import Modal from "../presentational/Modal.jsx";
 import FundsForm from "../modalForms/FundsForm.jsx";
 import ExpenseForm from "../modalForms/ExpenseForm.jsx";
-import { isEmpty } from "../../utils";
 
 const ModalContainer = props => {
   const [newFunds, setNewFunds] = useState([]);
@@ -25,10 +24,9 @@ const ModalContainer = props => {
     if (!props.funds[0]) {
       props.seedFunds(newFunds);
     }
-    console.log(newFunds);
     props.addFunds(newFunds[0]);
     props.queueExpenseData(newItems);
-    // props.history.go("/home");
+    props.history.go("/home");
   };
 
   const formWizard = () => {
