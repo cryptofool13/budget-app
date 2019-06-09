@@ -28,22 +28,26 @@ class Signup extends Component {
 
           <form onSubmit={handleSubmit(this.onSubmit)}>
             <fieldset className="email">
-              <label htmlFor="email">Email</label>
-              <Field
-                name="email"
-                autoComplete="off"
-                type="text"
-                component="input"
-              />
+              <label htmlFor="email">
+                Email
+                <Field
+                  name="email"
+                  autoComplete="off"
+                  type="text"
+                  component="input"
+                />
+              </label>
             </fieldset>
             <fieldset className="password">
-              <label htmlFor="password">Password</label>
-              <Field
-                name="password"
-                autoComplete="off"
-                type="password"
-                component="input"
-              />
+              <label htmlFor="password">
+                Password
+                <Field
+                  name="password"
+                  autoComplete="off"
+                  type="password"
+                  component="input"
+                />
+              </label>
             </fieldset>
             <div className="error">{this.props.errorMessage}</div>
             <button

@@ -60,8 +60,11 @@ main {
 fieldset {
   border: none;
   display: flex;
-  input {
+  label {
     width: 100%;
+    input {
+      width: 100%;
+    }
   }
 }
 

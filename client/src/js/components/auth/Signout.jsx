@@ -16,17 +16,19 @@ class Signout extends Component {
             <div>
               <h3>See you next time!</h3>
             </div>
-            <div>
+            <div className="flex-container">
               <div>
-                <p>Save money and build better spending habits with J$X!</p>
+                <p className="text">
+                  Save money and build better spending habits with J$X!
+                </p>
               </div>
-              <div>
-                <div>
+              <div className="center">
+                <div className="btn">
                   <Link to="/signin">Sign in</Link>
                 </div>
               </div>
               <div>
-                <p>
+                <p className="text">
                   Visualize finance with integrated charts and cutting edge data
                   extraction!
                 </p>
