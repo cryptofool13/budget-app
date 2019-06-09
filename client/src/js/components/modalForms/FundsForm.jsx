@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Field, reduxForm } from "redux-form";
 
+import { isEmpty } from "../../utils";
 import FundsInit from "./FundsInit.jsx";
 
 const FundsForm = props => {
-  const [isDisabled, setIsDisabled] = useState(false);
-
   const { accounts, handleSubmit, newFunds, handleAdd, finished, done } = props;
 
   const onAdd = formProps => {
     let temp = newFunds;
-    if (formProps.hasOwnProperty("balance")) temp.push(formProps);
+    console.log(formProps, accounts);
+    if (formProps.hasOwnProperty("balance") || accounts[0].name in formProps) {
+      temp.push(formProps);
+    }
     handleAdd(temp);
   };
+
   const renderPrompts = () => {
-    if (!finished) {
+    if (isEmpty(accounts) && !finished) {
       return <FundsInit ready={done} onAdd={onAdd} />;
     }
     return accounts.map(account => {
       return (
-        <>
-          <fieldset key={account._id}>
+        <Fragment key={account._id}>
+          <fieldset>
             <label>{account.name}</label>
             <Field
               name={account.name}
@@ -29,10 +32,7 @@ const FundsForm = props => {
               component="input"
             />
           </fieldset>
-          <button type="submit" disabled={isDisabled}>
-            Next
-          </button>
-        </>
+        </Fragment>
       );
     });
   };
@@ -41,6 +41,7 @@ const FundsForm = props => {
     <form onSubmit={handleSubmit(onAdd)}>
       <h3>Funds</h3>
       {renderPrompts()}
+      <button type="submit">Next</button>
     </form>
   );
 };
