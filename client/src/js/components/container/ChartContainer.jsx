@@ -8,7 +8,7 @@ import PieChart from "../presentational/charts/PieChart.jsx";
 const ChartContainer = props => {
   useEffect(() => {
     props.getChartFunds();
-    props.getChartEx;
+    // props.getChartEx;
   }, []);
 
   return (
