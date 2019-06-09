@@ -27,11 +27,11 @@ exports.addExpenseItems = (req, res, next) => {
 
   let items = [];
 
-  expenses.forEach(item => {
+  expenses.forEach(({ label, cost, itemType }) => {
     items.push({
-      label: item.label,
-      cost: item.cost,
-      itemType: item.itemType,
+      label,
+      cost,
+      itemType,
       _id: new ObjectID()
     });
   });

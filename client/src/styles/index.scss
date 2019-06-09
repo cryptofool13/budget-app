@@ -19,3 +19,6 @@ body::-webkit-scrollbar-thumb {
   background-color: rgba(169, 169, 169, 0) !important;
   outline: 1px solid $themeColor-light !important;
 }
+.modal {
+  z-index: 900;
+}

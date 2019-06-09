@@ -6,7 +6,6 @@ import FundsChart from "../presentational/charts/FundsChart.jsx";
 import PieChart from "../presentational/charts/PieChart.jsx";
 
 const ChartContainer = props => {
-  console.log(props.lineData);
   useEffect(() => {
     props.getChartFunds();
   }, []);

@@ -1,8 +1,7 @@
 import React from "react";
 import { Field } from "redux-form";
 
-const FundsInit = () => {
-  const handleSubmit = () => {};
+const FundsInit = ({ onAdd, ready }) => {
   return (
     <>
       <h3>Start by entering your funds info</h3>
@@ -20,6 +19,10 @@ const FundsInit = () => {
         <label htmlFor="balance">Balance</label>
         <Field name="balance" component="input" type="number" />
       </fieldset>
+      <button onClick={onAdd}>Add</button>
+      <button type="submit" onClick={() => ready(true)}>
+        Next
+      </button>
     </>
   );
 };

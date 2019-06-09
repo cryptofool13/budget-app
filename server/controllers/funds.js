@@ -23,8 +23,8 @@ exports.addFundEntry = (req, res, next) => {
 
   let accounts = [];
   // build temp array
-  funds.forEach(fund => {
-    accounts.push({ name: fund.name, balance: fund.balance });
+  funds.forEach(({ name, balance }) => {
+    accounts.push({ name, balance });
   });
   // build temp fund entry
   const newFundEntry = {

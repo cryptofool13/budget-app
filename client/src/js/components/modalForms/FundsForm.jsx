@@ -7,29 +7,35 @@ import { isEmpty } from "../../utils";
 const FundsForm = props => {
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const { accounts, handleSubmit, newFunds, handleAdd } = props;
+  const { accounts, handleSubmit, newFunds, handleAdd, finished, done } = props;
 
   const onAdd = formProps => {
     let temp = newFunds;
-    temp.push(formProps);
+    console.log("temp", temp);
+    if (formProps.hasOwnProperty("balance")) temp.push(formProps);
     handleAdd(temp);
-    // setIsDisabled(true);
+    console.log(newFunds);
   };
   const renderPrompts = () => {
-    if (isEmpty(accounts)) {
-      return <FundsInit />;
+    if (!finished) {
+      return <FundsInit ready={done} onAdd={onAdd} />;
     }
     return accounts.map(account => {
       return (
-        <fieldset key={account._id}>
-          <label>{account.name}</label>
-          <Field
-            name={account.name}
-            autoComplete="none"
-            type="number"
-            component="input"
-          />
-        </fieldset>
+        <>
+          <fieldset key={account._id}>
+            <label>{account.name}</label>
+            <Field
+              name={account.name}
+              autoComplete="none"
+              type="number"
+              component="input"
+            />
+          </fieldset>
+          <button type="submit" disabled={isDisabled}>
+            Next
+          </button>
+        </>
       );
     });
   };
@@ -38,9 +44,6 @@ const FundsForm = props => {
     <form onSubmit={handleSubmit(onAdd)}>
       <h3>Funds</h3>
       {renderPrompts()}
-      <button type="submit" disabled={isDisabled}>
-        Next
-      </button>
     </form>
   );
 };

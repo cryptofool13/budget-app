@@ -11,10 +11,12 @@ const ModalContainer = props => {
   const [newFunds, setNewFunds] = useState([]);
   const [newItems, setNewItems] = useState([]);
   const [show, setShow] = useState(false);
+  const [finished, setFinished] = useState(false);
 
   const hideModal = () => {
     setShow(false);
   };
+
   const showModal = () => {
     setShow(true);
   };
@@ -23,19 +25,24 @@ const ModalContainer = props => {
     if (!props.funds[0]) {
       props.seedFunds(newFunds);
     }
+    console.log(newFunds);
     props.addFunds(newFunds[0]);
     props.queueExpenseData(newItems);
-    props.history.go("/home");
+    // props.history.go("/home");
   };
+
   const formWizard = () => {
-    if (isEmpty(newFunds))
+    if (!finished)
       return (
         <FundsForm
           newFunds={newFunds}
+          finished={finished}
+          done={setFinished}
           handleAdd={setNewFunds}
           accounts={props.funds}
         />
       );
+
     return (
       <ExpenseForm
         newItems={newItems}
