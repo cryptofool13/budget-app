@@ -31,7 +31,6 @@ function colorPicker() {
 }
 
 function getActNames(data) {
-  console.log("data", data);
   const names = [];
   if (data[0]) {
     data[0].accounts.forEach(act => {
@@ -71,14 +70,7 @@ function drawLines(data) {
   }
 }
 const FundsChart = ({ data }) => {
-  return (
-    <div className="line">
-      {drawLines(data)}
-      {/* <Line type="monotone" dataKey="val1" stroke="#8884d8" />
-      <Line type="monotone" dataKey="val2" stroke="#6662b6" />
-      <Legend /> */}
-    </div>
-  );
+  return <div className="line">{drawLines(data)}</div>;
 };
 
 export default FundsChart;

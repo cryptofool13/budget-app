@@ -9,7 +9,6 @@ const FundsForm = props => {
 
   const onAdd = formProps => {
     let temp = newFunds;
-    console.log(formProps, accounts);
     if (formProps.hasOwnProperty("balance") || accounts[0].name in formProps) {
       temp.push(formProps);
     }
@@ -18,7 +17,7 @@ const FundsForm = props => {
 
   const renderPrompts = () => {
     if (isEmpty(accounts) && !finished) {
-      return <FundsInit ready={done} onAdd={onAdd} />;
+      return <FundsInit clear={props.clearFields} onAdd={onAdd} />;
     }
     return accounts.map(account => {
       return (
@@ -42,9 +41,19 @@ const FundsForm = props => {
       <h3 className="form-title">Funds</h3>
       {renderPrompts()}
 
-      <button type="submit">Next</button>
+      <button
+        type="submit"
+        onClick={() => {
+          setTimeout(() => done(true), 0);
+        }}
+      >
+        Next
+      </button>
     </form>
   );
 };
 
 export default reduxForm({ form: "updateFunds" })(FundsForm);
+
+// need to disable 'add' functionality on fundsinit form and
+// clear input values after so data doesnt get duplicated

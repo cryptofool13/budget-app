@@ -1,7 +1,7 @@
 import React from "react";
 import { Field } from "redux-form";
 
-const FundsInit = ({ onAdd, ready }) => {
+const FundsInit = ({ onAdd }) => {
   return (
     <>
       <h3>Start by entering your funds info</h3>

@@ -123,7 +123,6 @@ export const addFunds = formProps => async dispatch => {
       let acct = { name: item, balance: formProps[item] };
       entry.push(acct);
     }
-    console.log("addFunds entry", entry);
     const response = axios.post(
       "http://localhost:3000/api/funds",
       { funds: entry },
