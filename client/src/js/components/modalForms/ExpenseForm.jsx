@@ -40,7 +40,7 @@ const ExpenseForm = props => {
   };
   return (
     <form onSubmit={handleSubmit(onAdd)}>
-      <h3>Expenses</h3>
+      <h3 className="form-title">Expenses</h3>
       {renderPrompts()}
       <button type="submit">Add</button>
     </form>

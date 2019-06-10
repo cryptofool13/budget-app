@@ -5,6 +5,18 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 
 class Signout extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    document.getElementById("btn").classList.toggle("fading-out");
+    setTimeout(() => {
+      this.props.history.push("/signin");
+    }, 350);
+  }
+
   componentDidMount() {
     this.props.signout();
   }
@@ -23,9 +35,9 @@ class Signout extends Component {
                 </p>
               </div>
               <div className="center">
-                <div className="btn">
-                  <Link to="/signin">Sign in</Link>
-                </div>
+                <button onClick={this.handleClick} id="btn" className="btn">
+                  Sign in
+                </button>
               </div>
               <div>
                 <p className="text">

@@ -39,8 +39,9 @@ const FundsForm = props => {
 
   return (
     <form onSubmit={handleSubmit(onAdd)}>
-      <h3>Funds</h3>
+      <h3 className="form-title">Funds</h3>
       {renderPrompts()}
+
       <button type="submit">Next</button>
     </form>
   );

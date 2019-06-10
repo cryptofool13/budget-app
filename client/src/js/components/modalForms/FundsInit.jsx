@@ -20,9 +20,6 @@ const FundsInit = ({ onAdd, ready }) => {
         <Field name="balance" component="input" type="number" />
       </fieldset>
       <button onClick={onAdd}>Add</button>
-      <button type="submit" onClick={() => ready(true)}>
-        Next
-      </button>
     </>
   );
 };

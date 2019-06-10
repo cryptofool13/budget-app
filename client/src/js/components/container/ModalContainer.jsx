@@ -24,10 +24,9 @@ const ModalContainer = props => {
     if (!props.funds[0]) {
       props.seedFunds(newFunds);
     }
-    console.log(newFunds);
     props.addFunds(newFunds[0]);
     props.queueExpenseData(newItems);
-    // props.history.go("/home");
+    props.history.go("/home");
   };
 
   const formWizard = () => {

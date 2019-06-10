@@ -24,8 +24,10 @@
   align-items: center;
   width: 20vw;
   clip-path: polygon(0 0, 100% 0%, 75% 100%, 0% 100%);
+
   a {
     color: $gray-light;
+    letter-spacing: 6px;
   }
 }
 .nav {
