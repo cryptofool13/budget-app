@@ -14,7 +14,7 @@ function formatData(data) {
   return formattedData;
 }
 
-function colorPicker() {
+export function colorPicker() {
   const colors = {
     0: "red",
     1: "orange",
@@ -47,7 +47,7 @@ function drawLines(data) {
     return (
       <LineChart
         width={550}
-        height={150}
+        height={100}
         data={formattedData}
         margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
       >

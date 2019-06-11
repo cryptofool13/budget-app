@@ -3,25 +3,26 @@ import { connect } from "react-redux";
 
 import * as actions from "../../actions";
 import FundsChart from "../presentational/charts/FundsChart.jsx";
-import PieChart from "../presentational/charts/PieChart.jsx";
+import ExpenseChart from "../presentational/charts/ExpenseChart.jsx";
 
 const ChartContainer = props => {
   useEffect(() => {
     props.getChartFunds();
-    // props.getChartEx;
+    props.getChartExpenses();
   }, []);
 
   return (
     <section className="charts">
+      <ExpenseChart data={props.pieData} />
       <FundsChart data={props.lineData} />
-      <PieChart />
     </section>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    lineData: state.funds.chartData
+    lineData: state.funds.chartData,
+    pieData: state.expenses.chartData
   };
 };
 

@@ -1,4 +1,8 @@
-import { EXPENSE_TABLE, EXPENSE_DATA_ERROR } from "../actions/types";
+import {
+  EXPENSE_TABLE,
+  EXPENSE_CHART,
+  EXPENSE_DATA_ERROR
+} from "../actions/types";
 
 const INIT_STATE = {
   tableData: [],
@@ -12,6 +16,8 @@ export default (state = INIT_STATE, action) => {
       return { ...state, tableData: action.payload };
     case EXPENSE_DATA_ERROR:
       return { ...state, errorMessage: action.payload };
+    case EXPENSE_CHART:
+      return { ...state, chartData: action.payload };
     default:
       return state;
   }

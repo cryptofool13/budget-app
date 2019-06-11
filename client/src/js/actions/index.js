@@ -5,6 +5,7 @@ import {
   AUTH_ERROR,
   FUNDS_CHART,
   EXPENSE_TABLE,
+  EXPENSE_CHART,
   FUNDS_TABLE,
   FUND_DATA_ERROR,
   EXPENSE_DATA_ERROR
@@ -180,3 +181,25 @@ export const queueExpenseData = formProps => async dispatch => {
 };
 
 // write chart expenses action creator
+export const getChartExpenses = () => async dispatch => {
+  try {
+    let token = localStorage.getItem("token");
+    const response = await axios.get(
+      "http://localhost:3000/api/spending/set",
+      {
+        headers: { Authorization: token }
+      }
+    );
+
+    if (response.data.error) {
+      return dispatch({ type: EXPENSE_DATA_ERROR, payload: response.data.error });
+    }
+    return dispatch({ type: EXPENSE_CHART, payload: response.data });
+  } catch (e) {
+    dispatch({
+      type: FUND_DATA_ERROR,
+      payload: "something went wrong fetching the data"
+    });
+    console.log(e);
+  }
+};
