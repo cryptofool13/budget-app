@@ -37,14 +37,14 @@ const TabelContainer = props => {
     }
 
     return data.map(item => (
-      <tr key={item._id}>
+      <tr className="data-row" key={item._id}>
         <td>{item.name}</td>
         <td>{item.balance}</td>
       </tr>
     ));
   };
 
-  const renderERows = data => {
+  const renderSRows = data => {
     if (props.expenseError)
       return (
         <tr className="warning-row">
@@ -60,7 +60,7 @@ const TabelContainer = props => {
       );
 
     return data.map(item => (
-      <tr key={item._id}>
+      <tr className="data-row" key={item._id}>
         <td>{item.label}</td>
         <td>{item.cost}</td>
       </tr>
@@ -71,7 +71,7 @@ const TabelContainer = props => {
     <section className="tables">
       <Accounts renderRows={renderFRows} accounts={props.funds} />
 
-      <Spending renderRows={renderERows} expenses={props.expenses} />
+      <Spending renderRows={renderSRows} expenses={props.expenses} />
       {props.children}
     </section>
   );

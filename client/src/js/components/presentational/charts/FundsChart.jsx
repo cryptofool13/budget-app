@@ -46,8 +46,8 @@ function drawLines(data) {
   if (names[0]) {
     return (
       <LineChart
-        width={500}
-        height={300}
+        width={550}
+        height={150}
         data={formattedData}
         margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
       >
@@ -62,7 +62,7 @@ function drawLines(data) {
           );
         })}
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <Legend />
+        <Legend layout="vertical" verticalAlign="top" align="right" />
         <XAxis dataKey="timestamp" />
         <YAxis />
       </LineChart>

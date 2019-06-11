@@ -1,9 +1,14 @@
 .tables {
   background-color: lighten($color: $themeColor-dark, $amount: 12);
-  margin: 0 2rem;
-  max-height: 55vh;
+  border-radius: 1rem;
+  margin: 0 1rem;
+  height: 45vh;
   text-align: center;
   vertical-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 
   table {
     padding: 1rem;
@@ -14,11 +19,14 @@
     top: 0vh;
     z-index: 0;
     max-height: 20vh;
-    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 0 !important;
+    }
 
     th {
       position: sticky;
       top: 0vh;
+      border-radius: 1rem;
     }
   }
   .accounts-table {
@@ -34,13 +42,24 @@
   th {
     background-color: $themeColor-dark;
     padding: 0 1rem;
+    border-radius: 1rem;
   }
   tr {
     padding: 0.5rem 0;
+    cursor: default;
+    border-radius: 1rem;
   }
 }
 .warning-row td {
   border: red 1px solid;
   color: #ddd;
   font-weight: 500;
+}
+
+tr.data-row:hover {
+  background-color: #ffffff7f;
+  border-radius: 1rem;
+  td {
+    border-radius: 1rem;
+  }
 }
