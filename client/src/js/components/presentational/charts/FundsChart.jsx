@@ -14,7 +14,7 @@ function formatData(data) {
   return formattedData;
 }
 
-export function colorPicker() {
+export function colorPicker(randNum) {
   const colors = {
     0: "red",
     1: "orange",
@@ -23,11 +23,22 @@ export function colorPicker() {
     4: "blue",
     5: "indigo",
     6: "violet",
-    7: "black",
-    8: "chartruse",
-    9: "rebeccapurple"
+    7: "deepPink",
+    8: "chartreuse",
+    9: "rebeccapurple",
+    10: "fuchsia",
+    11: "magenta",
+    12: "darkOrchid",
+    13: "crimson",
+    14: "peru",
+    15: "oliveDrab",
+    16: "darkCyan",
+    17: "orangeRed",
+    18: "indianRed",
+    19: "fireBrick",
+    20: "limeGreen"
   };
-  return colors[Math.floor(Math.random() * 6)];
+  return colors[Math.floor((Math.random() * 2453 * randNum) % 20)];
 }
 
 function getActNames(data) {
@@ -57,7 +68,7 @@ function drawLines(data) {
               key={name}
               dataKey={`${name}`}
               type="monotone"
-              stroke={colorPicker()}
+              stroke={colorPicker(Math.random())}
             />
           );
         })}

@@ -23,7 +23,7 @@ const ExpenseChart = ({ data }) => {
   const myData = formatData(data);
   return (
     <div className="pie">
-      <PieChart width={550} height={200}>
+      <PieChart width={550} height={240}>
         <Pie
           data={myData}
           label
@@ -33,7 +33,7 @@ const ExpenseChart = ({ data }) => {
           dataKey="value"
         >
           {myData.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={colorPicker()} />
+            <Cell key={`cell-${index}`} fill={colorPicker(Math.random())} />
           ))}
         </Pie>
         <Legend layout="vertical" verticalAlign="top" align="right" />

@@ -5,6 +5,8 @@
   "main": "webpack.config.js",
   "dependencies": {
     "axios": "^0.18.1",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",

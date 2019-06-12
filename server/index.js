@@ -1,3 +1,4 @@
+require("dotenv").config();
 // main starting point of application
 const express = require("express");
 const http = require("http");
@@ -11,7 +12,7 @@ const router = require("./router");
 const app = express();
 
 // db setup
-mongoose.connect("mongodb://localhost:27017/new-auth", {
+mongoose.connect(process.env.DB_NAME, {
   useNewUrlParser: true
 });
 
@@ -27,7 +28,7 @@ router(app);
 
 // server setup
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 const server = http.createServer(app);
 

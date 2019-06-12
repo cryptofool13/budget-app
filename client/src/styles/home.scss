@@ -2,8 +2,8 @@
 
 main.home {
   background-color: $themeColor-light;
-  height: 60vh;
-  margin: 4rem 2rem;
+  height: 70vh;
+  margin: 2rem 2rem;
   display: grid;
   grid-template-columns: [leftside] 1fr [midcol] 1fr [rightside];
   grid-template-rows: [topside] 1fr [bottomside];
