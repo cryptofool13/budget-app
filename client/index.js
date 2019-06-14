@@ -1,12 +1,15 @@
 require("dotenv").config();
 const express = require("express");
+const path = require("path");
 
 const server = express();
-
-server.use(express.static(__dirname + "/"));
+// server;
 server.use(express.static("dist"));
-server.get("*", (req, res) => {
-  res.sendFile(path.join("dist", "index.html"));
+server.get("/*", (req, res) => {
+  let url = path.join(__dirname, "/dist", "index.html");
+
+  console.log(url);
+  res.sendFile(url);
 });
 
 server.listen(process.env.PORT, () => {

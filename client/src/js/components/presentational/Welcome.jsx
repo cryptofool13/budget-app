@@ -24,7 +24,8 @@ class Welcome extends React.Component {
     return (
       <main className="main">
         <div id="wrapper">
-          <h2>Welcome to my Budgeting App</h2>
+          <h2>Welcome to J $ X</h2>
+          <p>A balance tracking app</p>
           <button onClick={this.handleClick} className="welcome-signin">
             Sign In
           </button>

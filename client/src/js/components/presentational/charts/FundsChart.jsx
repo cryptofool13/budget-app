@@ -38,7 +38,7 @@ export function colorPicker(randNum) {
     19: "fireBrick",
     20: "limeGreen"
   };
-  return colors[Math.floor((Math.random() * 2453 * randNum) % 20)];
+  return colors[Math.floor(Math.random() * 20)];
 }
 
 function getActNames(data) {
