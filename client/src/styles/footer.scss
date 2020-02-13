@@ -1,0 +1,27 @@
+// @import "themeColors";
+.footer {
+  position: fixed;
+  height: 10vh;
+  bottom: 0vh;
+  width: 100%;
+  background-image: linear-gradient(
+    darken($themeColor-dark, 6),
+    $themeColor-dark
+  );
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  justify-content: space-between;
+}
+span {
+  width: 20vw;
+}
+.slant {
+  // position: relative;
+  // left: 70vw;
+  background-color: darken($color: $themeColor-dark, $amount: 9);
+  height: 100%;
+  z-index: 1;
+  clip-path: polygon(0 100%, 25% 0%, 100% 0%, 100% 100%);
+  justify-self: flex-end;
+}
